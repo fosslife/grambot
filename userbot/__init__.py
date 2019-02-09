@@ -20,4 +20,3 @@ api_id = os.environ['apiid']
 api_hash = os.environ['apihash']
 
 bot = TelegramClient('tguserbot', api_id, api_hash)
-logger.info('client started')
