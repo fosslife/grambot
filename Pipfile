@@ -10,7 +10,6 @@ autopep8 = "*"
 telethon = "*"
 requests = "*"
 python-dotenv = "*"
-unit-convertor = "*"
 
 [requires]
 python_version = "3.7"
