@@ -7,10 +7,6 @@ from os import getcwd
 async def insult(event):
     pattern_string = event.pattern_match.string
     entity = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
-    print(entity)
-    if entity:
-        await event.respond(entity)
-    else:
-        file = open("./plugins/data/insults").read().split("\n")
-        insult = choice(file)
-        await event.respond(insult)
+    file = open("./plugins/data/insults").read().split("\n")
+    insult = choice(file)
+    await event.respond(insult)
