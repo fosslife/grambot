@@ -9,4 +9,3 @@ async def e(event):
         sleep(0.5)
         await event.edit("👉  👌")
         sleep(0.5)
-        print(i)
