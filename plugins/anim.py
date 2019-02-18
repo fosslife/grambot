@@ -2,7 +2,7 @@ from userbot import bot
 from telethon import TelegramClient, events
 from time import sleep
 
-@bot.on(events.NewMessage(pattern='.anim()'))
+@bot.on(events.NewMessage(pattern='\.anim()'))
 async def anim(event):
     pattern_string = event.pattern_match.string
     animes = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]

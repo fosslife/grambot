@@ -2,7 +2,7 @@ from random import choice
 from userbot import bot
 from telethon import TelegramClient, events
 
-@bot.on(events.NewMessage(pattern='.die()'))
+@bot.on(events.NewMessage(pattern='\.die'))
 async def insult(event):
     await event.delete()
     pattern_string = event.pattern_match.string

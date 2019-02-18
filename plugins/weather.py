@@ -4,7 +4,7 @@ from telethon import TelegramClient, events
 from os import environ
 import re
 
-@bot.on(events.NewMessage(pattern='.weather'))
+@bot.on(events.NewMessage(pattern='\.weather'))
 async def getWeather(event):
     pattern_string = event.pattern_match.string
     city_to_find = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
