@@ -1,7 +1,7 @@
 from userbot import bot
 from telethon import TelegramClient, events
 
-@bot.on(events.NewMessage(pattern='.whois'))
+@bot.on(events.NewMessage(pattern='.user()'))
 async def getUser(event):
     pattern_string = event.pattern_match.string
     entity = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
