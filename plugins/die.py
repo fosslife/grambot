@@ -4,7 +4,6 @@ from telethon import TelegramClient, events
 
 @bot.on(events.NewMessage(pattern='\.die'))
 async def insult(event):
-    await event.delete()
     pattern_string = event.pattern_match.string
     entity = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
     file = open("./plugins/data/insults").read().split("\n")
