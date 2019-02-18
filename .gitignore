@@ -2,3 +2,4 @@
 .vscode/
 .env
 __pycache__
+tguserbot.session-journal
