@@ -1,0 +1,6 @@
+`.anim(f, s)` - animates message between `f` and `s`
+`.die()` - sends a random insult to the replied message
+`.help()` - this message
+`.quote()` - sends a random quote
+`.user(name/id/link)` - information about user
+`.weather(City)` - gives weather information about `City`
