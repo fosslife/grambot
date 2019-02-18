@@ -12,5 +12,5 @@ async def getUser(event):
 Name - {info.first_name} {info.last_name if info.last_name else ""}
 id - {info.id}
 """)
-    except ValueError:
+    except Exception:
         await event.respond("Cannot find entity with " + entity)
