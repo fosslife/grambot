@@ -1,3 +1,5 @@
+from os import environ
+
 chats = (-1001335202320, 1377536264)
 
 weather = {
@@ -42,8 +44,8 @@ meme = {
     "chats": chats
 }
 
-group = {
-    "pattern": "\.group",
+id = {
+    "pattern": "\.id",
     "incoming": True,
     "outgoing": True,
 }
