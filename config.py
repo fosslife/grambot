@@ -1,6 +1,7 @@
 from os import environ
 
-chats = (-1001335202320, 1377536264)
+env = environ.get('allowed_chats').split(" ")
+chats = list(map(int, env))
 
 weather = {
     "pattern": "\.weather",
