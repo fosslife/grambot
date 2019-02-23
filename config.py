@@ -50,3 +50,10 @@ id = {
     "incoming": True,
     "outgoing": True,
 }
+
+tag = {
+    "pattern": "\.tag",
+    "incoming": False,
+    "outgoing": True,
+    "chats": chats
+}
