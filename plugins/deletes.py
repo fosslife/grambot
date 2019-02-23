@@ -2,7 +2,7 @@ from userbot import bot
 from telethon import TelegramClient, events
 
 
-@bot.on(events.MessageDeleted())
+# @bot.on(events.MessageDeleted())
 async def delted(event):
     try:
         id = event.original_update.channel_id
