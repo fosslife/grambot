@@ -14,7 +14,7 @@ Username - `{info.user.username}`
 {"User is a bot" if info.user.bot else "user is not a bot"}
 {"User is restricted for " + info.user.restriction_reason  if info.user.restricted else "User is not restricted"}
 Name - {info.user.first_name} {info.user.last_name if info.user.last_name else ""}
-Status - {info.about}
+Status - `{info.about}`
 id - {info.user.id}
 {info.common_chats_count} groups common with me
 {"I have blocked them" if info.blocked else "I have not blocked them"}
