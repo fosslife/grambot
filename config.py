@@ -47,7 +47,7 @@ meme = {
 
 id = {
     "pattern": "\.id",
-    "incoming": True,
+    "incoming": False,
     "outgoing": True,
 }
 
