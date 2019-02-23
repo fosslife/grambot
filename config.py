@@ -41,3 +41,9 @@ meme = {
     "outgoing": True,
     "chats": chats
 }
+
+group = {
+    "pattern": "\.group",
+    "incoming": True,
+    "outgoing": True,
+}
