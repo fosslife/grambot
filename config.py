@@ -34,10 +34,3 @@ die = {
     "outgoing": True,
     "chats": chats
 }
-
-anim = {
-    "pattern": "\.anim",
-    "incoming": False,
-    "outgoing": True,
-    "chats": chats
-}
