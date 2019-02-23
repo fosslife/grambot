@@ -10,7 +10,8 @@ file_path_mapping = {
     "nou": images_dir + "nou.jpg",
     "ret": images_dir + "retarded.jpg",
     "moc": images_dir + "moc.jpg",
-    "hoe": images_dir + "hoe.jpg"
+    "hoe": images_dir + "hoe.jpg",
+    "sgh": images_dir + "get_some_help.gif",
 }
 
 @bot.on(events.NewMessage(**meme))
