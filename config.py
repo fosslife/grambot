@@ -34,3 +34,10 @@ die = {
     "outgoing": True,
     "chats": chats
 }
+
+meme = {
+    "pattern": "\.meme",
+    "incoming": True,
+    "outgoing": True,
+    "chats": chats
+}
