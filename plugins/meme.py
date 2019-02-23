@@ -7,7 +7,9 @@ images_dir = "./plugins/data/images/"
 file_path_mapping = {
     "pys": images_dir + "played_yourself.gif",
     "nou": images_dir + "nou.jpg",
-    "retarded": images_dir + "retarded.jpg"
+    "retarded": images_dir + "retarded.jpg",
+    "moc": images_dir + "moc.jpg",
+    "hoe": images_dir + "hoe.jpg"
 }
 
 @bot.on(events.NewMessage(**meme))
