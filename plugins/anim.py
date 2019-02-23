@@ -1,7 +1,6 @@
 from userbot import bot
 from telethon import TelegramClient, events
 from time import sleep
-from config import anim
 import re
 
 # both regex and parse() Coutesy of @ceda_ei
@@ -23,7 +22,7 @@ def parse(text):
         return (first_param, second_param)
     return None
 
-@bot.on(events.NewMessage(pattern=compiled))
+@bot.on(events.NewMessage(pattern=compiled, chats=(-1001335202320, 1377536264), incoming=False, outgoing=True))
 async def anim(event):
     matched = parse(event.pattern_match.string)
     before = matched[0]
