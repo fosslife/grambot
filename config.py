@@ -52,7 +52,7 @@ id = {
 }
 
 tag = {
-    "pattern": "\.tag",
+    "pattern": r"(.*)\[([^\]]+)\]\(([^)]+)\)(.*)",
     "incoming": False,
     "outgoing": True,
     "chats": chats
