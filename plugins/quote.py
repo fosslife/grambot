@@ -1,9 +1,9 @@
 import requests
 from userbot import bot
 from telethon import TelegramClient, events
-from config import commands
+from config import quote
 
-@bot.on(events.NewMessage(pattern=commands["quote"]))
+@bot.on(events.NewMessage(**quote))
 async def sendQute(event):
     print(event)
     quotes_api_url = "https://opinionated-quotes-api.gigalixirapp.com/v1/quotes"
