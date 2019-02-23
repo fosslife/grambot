@@ -1,9 +1,9 @@
 from random import choice
 from userbot import bot
 from telethon import TelegramClient, events
-from config import commands
+from config import die
 
-@bot.on(events.NewMessage(pattern=commands["die"]))
+@bot.on(events.NewMessage(**die))
 async def insult(event):
     pattern_string = event.pattern_match.string
     entity = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
