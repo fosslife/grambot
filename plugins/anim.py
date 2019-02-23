@@ -2,21 +2,40 @@ from userbot import bot
 from telethon import TelegramClient, events
 from time import sleep
 from config import anim
+import re
 
-@bot.on(events.NewMessage(**anim))
+# both regex and parse() Coutesy of @ceda_ei
+reg = r"^\.anim\((?P<q>\"|')?(?(q)((?:(?!(?P=q)).)+)(?P=q)|([^,)]+)),\s*(?P<r>\"|')?(?(r)((?:(?!(?P=r)).)+)(?P=r)|([^,)]+))\)$"
+compiled = re.compile(reg)
+
+def parse(text):
+    x = compiled
+    match = x.match(text)
+    if match:
+        if match.group(2):
+            first_param = match.group(2)
+        else:
+            first_param = match.group(3)
+        if match.group(5):
+            second_param = match.group(5)
+        else:
+            second_param = match.group(6)
+        return (first_param, second_param)
+    return None
+
+@bot.on(events.NewMessage(pattern=compiled))
 async def anim(event):
-    pattern_string = event.pattern_match.string
-    animes = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
-    lst = animes.split(",")
-    before = lst[0].strip()
-    after = lst[1].strip()
-    try:
-        reply_to_user = event.message.to_id.user_id
-    except AttributeError:
-        reply_to_user = event.message.to_id.channel_id
-    sent = await event.respond(after, reply_to=event.reply_to_msg_id)
-    for i in range(0, 6):
-        await bot.edit_message(reply_to_user, sent.id, before)
-        sleep(0.5)
-        await bot.edit_message(reply_to_user, sent.id, after)
-        sleep(0.5)
+    matched = parse(event.pattern_match.string)
+    before = matched[0]
+    after = matched[1]
+    if before and after:
+        try:
+            reply_to_user = event.message.to_id.user_id
+        except AttributeError:
+            reply_to_user = event.message.to_id.channel_id
+        sent = await event.respond(after, reply_to=event.reply_to_msg_id)
+        for i in range(0, 2):
+            await bot.edit_message(reply_to_user, sent.id, before)
+            sleep(0.5)
+            await bot.edit_message(reply_to_user, sent.id, after)
+            sleep(0.5)
