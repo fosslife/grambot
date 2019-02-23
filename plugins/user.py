@@ -17,7 +17,7 @@ Name - {info.user.first_name} {info.user.last_name if info.user.last_name else "
 Status - `{info.about}`
 id - {info.user.id}
 {info.common_chats_count} groups common with me
-{"I have blocked them" if info.blocked else "I have not blocked them"}
+{"I have blocked this user" if info.blocked else "I have not blocked this user"}
 
 """)
     except Exception:
