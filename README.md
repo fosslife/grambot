@@ -15,7 +15,7 @@ When the bot encounters a new message on telegram that matches exact `.weather` 
 ```
 These output are sent to the same channel the command was sent on, by YOUR account. 
 
-![example](./demo.gif)
+[![Demo](https://img.youtube.com/vi/wybDkn1q3mA/0.jpg)](https://www.youtube.com/watch?v=wybDkn1q3mA)
 
 
 ## Installation:
