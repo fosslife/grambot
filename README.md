@@ -37,4 +37,4 @@ if you face any issues contact me on Telegram or feel free to open issue :D
 
 
 ## License
-grambot is licensed under MIT
+grambot is licensed under MIT. Please see LICENSE file for more information
