@@ -57,3 +57,9 @@ tag = {
     "outgoing": True,
     "chats": chats
 }
+
+myname = {
+    "incoming": True,
+    "outgoing": True,
+    "chats": chats
+}
