@@ -10,4 +10,4 @@ autopep8 = "*"
 telethon = "*"
 requests = "*"
 python-dotenv = "*"
-
+beautifulsoup4 = "*"
