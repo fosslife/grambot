@@ -1,6 +1,6 @@
 from userbot import bot
 from telethon import TelegramClient, events
-from time import sleep
+from asyncio import sleep
 import re
 from config import chats
 
