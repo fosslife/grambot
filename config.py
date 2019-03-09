@@ -60,6 +60,13 @@ tag = {
 
 myname = {
     "incoming": True,
+    "outgoing": False,
+    "chats": chats
+}
+
+waiting = {
+    "pattern": "\.wait",
+    "incoming": False,
     "outgoing": True,
     "chats": chats
 }
