@@ -70,3 +70,10 @@ waiting = {
     "outgoing": True,
     "chats": chats
 }
+
+google = {
+    "pattern": "\.google",
+    "incoming": False,
+    "outgoing": True,
+    "chats": chats
+}
