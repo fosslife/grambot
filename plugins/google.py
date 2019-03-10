@@ -14,8 +14,6 @@ async def google(event):
     query_params = query_string.replace(" ", "+")
     res = requests.get('https://www.google.com/search',  {"q": query_params}, headers=USER_AGENT)
     soup = BeautifulSoup(res.text, 'html.parser')
-    header = soup.findAll('div', {"role": "heading"})[1]
-    msg = header.findChild().text
-    # print(children)
-    # text = children[1].text
+    header = soup.findAll('div', {"role": "heading"})
+    msg = header[1].findChild().text
     await event.respond(msg)
