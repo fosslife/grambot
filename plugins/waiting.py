@@ -17,6 +17,4 @@ async def animated_response(event):
 
 @bot.on(events.NewMessage(**waiting))
 async def myname(event):
-    pattern_string = event.pattern_match.string
-    type_of_reply = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
     await animated_response(event)
