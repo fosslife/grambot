@@ -24,7 +24,7 @@ async def google(event):
     except IndexError as e:
         pass
     # that means try another method:
-    attr_kc_text = soup.findAll("div", {"data-attrid" : re.compile(r"^kc:/[a-z]+/[a-z_]+:[a-z]+")})
+    attr_kc_text = soup.findAll("div", {"data-attrid" : re.compile(r"^kc:/\w+/\w+:\w+")})
     # if there's any such tag
     if attr_kc_text:
         # it's probably in the second child of div tag with this attribute:   
@@ -35,7 +35,7 @@ async def google(event):
         await event.respond(msg)
         return # don't execute this method further
     # else search for another attribute type
-    attr_hc_text = soup.findAll("div", {"data-attrid" : re.compile(r"^hw:/[a-z]+/[a-z_]+:[a-z]+")})
+    attr_hc_text = soup.findAll("div", {"data-attrid" : re.compile(r"^hw:/\w+/\w+:\w+")})
     # if it's present
     if attr_hc_text:
         # same logic
