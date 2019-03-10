@@ -42,3 +42,5 @@ async def google(event):
         msg = attr_hc_text[0].findChild().findChild().text
         await event.respond(msg)
         return # don't execute this method further
+    # Well, everything up above failed, try another methods:
+    await event.respond("can't find anything on that, I am still learning sorry")
