@@ -14,6 +14,18 @@ async def google(event):
     query_params = query_string.replace(" ", "+")
     res = requests.get('https://www.google.com/search',  {"q": query_params}, headers=USER_AGENT)
     soup = BeautifulSoup(res.text, 'html.parser')
-    header = soup.findAll('div', {"role": "heading"})
-    msg = header[1].findChild().text
+    # first try to find div tag with attribute data-tts and data-tts-text
+    tts_text = soup.findAll("div", {"data-tts" : True, "data-tts-text" : True})
+    # there should be only one element present:
+    try:
+        msg = tts_text[0].text
+        await event.respond(msg)
+        return # don't execute this method further
+    except IndexError as e:
+        pass
+    # that means try another method:
+    attr_kc_text = soup.findAll("div", {"data-attrid" : re.compile(r"^kc:/[a-z]+/[a-z_]+:[a-z]+")})
+    print(attr_kc_text)
+    # it's probably in the second child of div tag with this attribute:   
+    msg = attr_kc_text[0].findChild().findChild().text
     await event.respond(msg)
