@@ -25,7 +25,20 @@ async def google(event):
         pass
     # that means try another method:
     attr_kc_text = soup.findAll("div", {"data-attrid" : re.compile(r"^kc:/[a-z]+/[a-z_]+:[a-z]+")})
-    print(attr_kc_text)
-    # it's probably in the second child of div tag with this attribute:   
-    msg = attr_kc_text[0].findChild().findChild().text
-    await event.respond(msg)
+    # if there's any such tag
+    if attr_kc_text:
+        # it's probably in the second child of div tag with this attribute:   
+        try:
+            msg = attr_kc_text[0].findChild().findChild("div", {"role": "heading"}).text
+        except AttributeError as a:
+            msg = attr_kc_text[0].findChild("div", {"role": "heading"}).findChild().text
+        await event.respond(msg)
+        return # don't execute this method further
+    # else search for another attribute type
+    attr_hc_text = soup.findAll("div", {"data-attrid" : re.compile(r"^hw:/[a-z]+/[a-z_]+:[a-z]+")})
+    # if it's present
+    if attr_hc_text:
+        # same logic
+        msg = attr_hc_text[0].findChild().findChild().text
+        await event.respond(msg)
+        return # don't execute this method further
