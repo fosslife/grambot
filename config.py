@@ -60,7 +60,7 @@ tag = {
 
 myname = {
     "incoming": True,
-    "outgoing": False,
+    "outgoing": True,
     "chats": chats
 }
 
@@ -73,7 +73,7 @@ waiting = {
 
 google = {
     "pattern": "\.google",
-    "incoming": False,
+    "incoming": True,
     "outgoing": True,
     "chats": chats
 }
