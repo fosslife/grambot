@@ -43,4 +43,4 @@ async def google(event):
         await event.respond(msg)
         return # don't execute this method further
     # Well, everything up above failed, try another methods:
-    await event.respond("can't find anything on that, I am still learning sorry")
+    await event.respond("can't find anything on that, please report this query to Spark")
