@@ -7,6 +7,8 @@ It's a telegram userbot. if you don't know what a userbot is, it's a normal user
 This bot is written in Python, with a famous telegram MTProto framework known as [Telethon](https://github.com/LonamiWebs/Telethon). With the help of Telethon, we can keep the server in `listening` mode for events such as New Incoming message etc etc and then for a specific type of message, take a specific action.
 
 ## Example
+[See full list [Here](./Plugins.md)]
+
 for this bot I have enabled `commands` such as `.help` and `.weather`.
 When the bot encounters a new message on telegram that matches exact `.weather` i.e start from `(dot)(weather)`, it executes a special coroutine that fetches weather from open weather API of given city. thus
 ```
