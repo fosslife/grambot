@@ -84,3 +84,10 @@ server = {
     "outgoing": True,
     "chats": 'me'
 }
+
+messages = {
+    "pattern": "\.say",
+    "incoming": False,
+    "outgoing": True,
+    "chats": chats
+}
