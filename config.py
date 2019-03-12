@@ -77,3 +77,10 @@ google = {
     "outgoing": True,
     "chats": chats
 }
+
+server = {
+    "pattern": "\.exec",
+    "incoming": False,
+    "outgoing": True,
+    "chats": 'me'
+}
