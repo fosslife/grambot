@@ -43,4 +43,14 @@ async def google(event):
         await event.respond(msg)
         return # don't execute this method further
     # Well, everything up above failed, try another methods:
+    # Let's see if it's a time-related card
+    rso = soup.find(id="rso");
+    card = rso.findChildren("div", {"class": "card-section"}, recursive=True)
+    try:
+        time = card[0].findChild().text
+        await event.respond(time)
+        return
+    except Exception:
+        pass
+    # it's not a time card either
     await event.respond("can't find anything on that, please report this query to Spark")
