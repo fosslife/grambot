@@ -4,7 +4,7 @@ from config import waiting
 from asyncio import sleep
 
 async def animated_response(event):
-    sent_message = await event.respond("<code>waiting</code>", parse_mode="md")
+    sent_message = await event.respond("<code>waiting</code>", parse_mode="html")
     await event.delete()
     try:
         reply_to_user = event.message.to_id.user_id
