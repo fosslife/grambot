@@ -1,12 +1,14 @@
-from userbot import bot
+from userbot import bot, logger
 from telethon import TelegramClient, events
 from config import user
 from telethon.tl.functions.users import GetFullUserRequest
 
 @bot.on(events.NewMessage(**user))
 async def getUser(event):
+    logger.info("user plugin is called")
     pattern_string = event.pattern_match.string
     entity = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
+    logger.info(f"entity to search - {entity}")
     try:
         info = await bot(GetFullUserRequest(entity))
         await event.respond(f"""
