@@ -2,22 +2,22 @@ from telethon import TelegramClient, events
 import os
 
 import logging
-import logging.handlers
+from logging.handlers import RotatingFileHandler
 from telethon import TelegramClient, events
 import time
 import os
 from dotenv import load_dotenv
 
 LOG_FILENAME = 'logs/grambot.log'
-logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 needRoll = os.path.isfile(LOG_FILENAME)
 
-handler = logging.handlers.RotatingFileHandler(LOG_FILENAME, backupCount=20)
-handler.setFormatter()
+handler = RotatingFileHandler(LOG_FILENAME, backupCount=20)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')  
+handler.setFormatter(formatter)
 logger.addHandler(handler)
 load_dotenv()
 
