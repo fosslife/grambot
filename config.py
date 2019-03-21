@@ -92,3 +92,10 @@ messages = {
     "outgoing": True,
     "chats": chats
 }
+
+cleanup = {
+    "pattern": "\.clean",
+    "incoming": False,
+    "outgoing": True,
+    "chats": chats
+}

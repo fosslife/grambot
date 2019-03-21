@@ -53,7 +53,7 @@ async def google(event):
             return # don't execute this method further
         # Well, everything up above failed, try another methods:
         # Let's see if it's a time-related card
-        rso = soup.find(id="rso");
+        rso = soup.find(id="rso")
         card = rso.findChildren("div", {"class": "card-section"}, recursive=True)
         try:
             time = card[0].findChild().text
