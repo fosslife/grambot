@@ -1,4 +1,4 @@
-from userbot import bot
+from userbot import bot, logger
 from telethon import TelegramClient, events
 from config import waiting
 from asyncio import sleep
@@ -17,4 +17,5 @@ async def animated_response(event):
 
 @bot.on(events.NewMessage(**waiting))
 async def myname(event):
+    logger.info("waiting plugin called")
     await animated_response(event)

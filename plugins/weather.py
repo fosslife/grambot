@@ -1,5 +1,5 @@
 import requests
-from userbot import bot
+from userbot import bot, logger
 from telethon import TelegramClient, events
 from os import environ
 import re
@@ -7,8 +7,10 @@ from config import weather
 
 @bot.on(events.NewMessage(**weather))
 async def getWeather(event):
+    logger.info("weather plugin called")
     pattern_string = event.pattern_match.string
     city_to_find = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
+    logger.info(f"city to find - {city_to_find}")
     openweather_url = "https://api.openweathermap.org/data/2.5/weather"
     openweather_api_key = environ.get("openweather_api_key", None)
     params = { "q" : city_to_find, "appid": openweather_api_key }
