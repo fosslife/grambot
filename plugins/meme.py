@@ -1,4 +1,4 @@
-from userbot import bot
+from userbot import bot, logger
 from telethon import TelegramClient, events
 from config import meme
 
@@ -16,9 +16,11 @@ file_path_mapping = {
 
 @bot.on(events.NewMessage(**meme))
 async def memes(event):
+    logger.info("meme plugin is called")
     await event.delete()
     pattern_string = event.pattern_match.string
     meme_name = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
+    logger.info(f"file to send {file_path_mapping.get(meme_name)}")
     file_to_send = file_path_mapping.get(meme_name)
     if meme_name=="help":
         await event.respond(open(file_to_send).read(), reply_to=event.reply_to_msg_id)
