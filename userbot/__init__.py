@@ -9,7 +9,11 @@ import os
 from dotenv import load_dotenv
 
 logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+    filename="logs/grambot.log",
+    filemode='a',
+    datefmt='%H:%M:%S',
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    level=logging.INFO
 )
 
 load_dotenv()
