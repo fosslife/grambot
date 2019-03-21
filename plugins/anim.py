@@ -4,7 +4,7 @@ from asyncio import sleep
 import re
 from config import chats
 
-# both regex and parse() Coutesy of @ceda_ei
+# both regex and parse() Courtesy of @ceda_ei
 reg = r"^\.anim\((?P<q>\"|')?(?(q)((?:(?!(?P=q)).)+)(?P=q)|([^,)]+)),\s*(?P<r>\"|')?(?(r)((?:(?!(?P=r)).)+)(?P=r)|([^,)]+))\)$"
 compiled = re.compile(reg)
 
