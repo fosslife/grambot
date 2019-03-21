@@ -15,7 +15,7 @@ logger.setLevel(logging.INFO)
 
 needRoll = os.path.isfile(LOG_FILENAME)
 
-handler = RotatingFileHandler(LOG_FILENAME, backupCount=20)
+handler = RotatingFileHandler(LOG_FILENAME, backupCount=10)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')  
 handler.setFormatter(formatter)
 logger.addHandler(handler)
