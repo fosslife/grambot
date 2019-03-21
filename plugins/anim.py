@@ -36,6 +36,6 @@ async def anim(event):
         sent = await event.respond(after, reply_to=event.reply_to_msg_id)
         for i in range(0, 2):
             await bot.edit_message(reply_to_user, sent.id, before)
-            sleep(0.5)
+            await sleep(0.5)
             await bot.edit_message(reply_to_user, sent.id, after)
-            sleep(0.5)
+            await sleep(0.5)
