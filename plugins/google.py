@@ -1,4 +1,4 @@
-from userbot import bot
+from userbot import bot, logger
 from telethon import TelegramClient, events
 from config import google
 from bs4 import BeautifulSoup
@@ -9,8 +9,10 @@ USER_AGENT = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKi
 
 @bot.on(events.NewMessage(**google))
 async def google(event):
+    logger.info("google plugin called")
     pattern_string = event.pattern_match.string
     query_string = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
+    logger.info(f"query string to search {query_string}")
     query_params = query_string.replace(" ", "+")
     res = requests.get('https://www.google.com/search',  {"q": query_params}, headers=USER_AGENT)
     soup = BeautifulSoup(res.text, 'html.parser')
@@ -21,6 +23,7 @@ async def google(event):
         try:
             msg = tts_text[0].text
             await event.respond(msg)
+            logger.info("found record with attribute type tts_text")
             return # don't execute this method further
         except IndexError as e:
             pass
@@ -32,10 +35,12 @@ async def google(event):
             try:
                 msg = attr_kc_text[0].findChild().findChild("div", {"role": "heading"}).text
                 await event.respond(msg)
+                logger.info("found record with attribute type kc:/x/x in second div")
                 return
             except AttributeError as a:
                 msg = attr_kc_text[0].findChild("div", {"role": "heading"}).findChild().text
                 await event.respond(msg)
+                logger.info("found record with attribute type kc:/x/x in first div")
                 return # don't execute this method further
         # else search for another attribute type
         attr_hc_text = soup.findAll("div", {"data-attrid" : re.compile(r"^hw:/\w+/\w+:\w+")})
@@ -44,6 +49,7 @@ async def google(event):
             # same logic
             msg = attr_hc_text[0].findChild().findChild().text
             await event.respond(msg)
+            logger.info("found record with attribute type hw:/x/x in second div")
             return # don't execute this method further
         # Well, everything up above failed, try another methods:
         # Let's see if it's a time-related card
@@ -52,9 +58,11 @@ async def google(event):
         try:
             time = card[0].findChild().text
             await event.respond(time)
+            logger.info("found record as time card")
             return
         except Exception:
             pass
         # it's not a time card either
     except Exception:
+        logger.info("couldn't find anything")
         await event.respond("can't find anything on that, please report this query to Spark")
