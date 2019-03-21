@@ -1,5 +1,5 @@
 from os import environ
-
+import re
 env = environ.get('allowed_chats').split(" ")
 chats = list(map(int, env))
 
@@ -59,6 +59,7 @@ tag = {
 }
 
 myname = {
+    "pattern": re.compile(r".*(spark|sparkenstein|sprk|prabhanjan|prabhu)", re.IGNORECASE),
     "incoming": True,
     "outgoing": True,
     "chats": chats
