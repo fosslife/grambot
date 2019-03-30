@@ -8,7 +8,7 @@ messages_mapper = {
 }
 
 @bot.on(events.NewMessage(**messages))
-async def messages(event):
+async def messagesfns(event):
     logger.info("called messages plugin")
     pattern_string = event.pattern_match.string
     message = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]

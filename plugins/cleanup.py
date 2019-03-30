@@ -3,7 +3,7 @@ from telethon import TelegramClient, events
 from config import cleanup
 
 @bot.on(events.NewMessage(**cleanup))
-async def cleanup(event):
+async def clean(event):
     logger.info("cleanup plugin called")
     pattern_string = event.pattern_match.string
     limit = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
