@@ -45,7 +45,7 @@ meme = {
     "chats": chats
 }
 
-id = {
+ids = {
     "pattern": "\.id",
     "incoming": False,
     "outgoing": True,

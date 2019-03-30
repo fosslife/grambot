@@ -1,10 +1,10 @@
 from userbot import bot, logger
 from telethon import TelegramClient, events
-from config import id
+from config import ids
 
 
-@bot.on(events.NewMessage(**id))
-async def id(event):
+@bot.on(events.NewMessage(**ids))
+async def fn(event):
     logger.info("group info plugin called")
     try:
         id = event.message.to_id.channel_id

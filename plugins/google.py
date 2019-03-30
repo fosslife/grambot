@@ -8,7 +8,7 @@ import re
 USER_AGENT = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
 
 @bot.on(events.NewMessage(**google))
-async def google(event):
+async def googlefn(event):
     logger.info("google plugin called")
     pattern_string = event.pattern_match.string
     query_string = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]

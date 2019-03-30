@@ -5,7 +5,7 @@ from os import environ
 from datetime import datetime
 
 @bot.on(events.NewMessage(**myname))
-async def myname(event):
+async def mynamefn(event):
     logger.info("myname plugin is called")
     if event.is_group:
         logger.info(f"incoming message is {event.raw_text.lower()}")

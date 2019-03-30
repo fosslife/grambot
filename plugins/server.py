@@ -12,7 +12,7 @@ allowed_commands = [
 ]
 
 @bot.on(events.NewMessage(**server))
-async def server(event):
+async def serverfn(event):
     logger.info("server plugin called")    
     pattern_string = event.pattern_match.string
     command = pattern_string[pattern_string.find("(")+1:pattern_string.find(")")]
