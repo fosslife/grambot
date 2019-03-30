@@ -10,6 +10,9 @@ from dotenv import load_dotenv
 
 LOG_FILENAME = 'logs/grambot.log'
 
+if not os.path.exists('logs'):
+    os.mkdir('logs')
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
