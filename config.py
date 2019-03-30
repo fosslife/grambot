@@ -99,3 +99,10 @@ cleanup = {
     "outgoing": True,
     "chats": chats
 }
+
+omni = {
+    "pattern": "\.omni",
+    "incoming": False,
+    "outgoing": True,
+    "chats": chats
+}
