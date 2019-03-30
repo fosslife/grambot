@@ -5,42 +5,42 @@ chats = list(map(int, env))
 
 weather = {
     "pattern": "\.weather",
-    "incoming": True,
+    "incoming": False,
     "outgoing": True,
     "chats": chats
 }
 
 user = {
     "pattern": "\.user",
-    "incoming": True,
+    "incoming": False,
     "outgoing": True,
     "chats": chats
 }
 
 quote = {
     "pattern": "\.quote",
-    "incoming": True,
+    "incoming": False,
     "outgoing": True,
     "chats": chats
 }
 
 help = {
     "pattern": "\.help",
-    "incoming": True,
+    "incoming": False,
     "outgoing": True,
     "chats": chats
 }
 
 die = {
     "pattern": "\.die",
-    "incoming": True,
+    "incoming": False,
     "outgoing": True,
     "chats": chats
 }
 
 meme = {
     "pattern": "\.meme",
-    "incoming": True,
+    "incoming": False,
     "outgoing": True,
     "chats": chats
 }
@@ -60,7 +60,7 @@ tag = {
 
 myname = {
     "pattern": re.compile(r".*(spark|sparkenstein|sprk|prabhanjan|prabhu)", re.IGNORECASE),
-    "incoming": True,
+    "incoming": False,
     "outgoing": True,
     "chats": chats
 }
@@ -74,7 +74,7 @@ waiting = {
 
 google = {
     "pattern": "\.google",
-    "incoming": True,
+    "incoming": False,
     "outgoing": True,
     "chats": chats
 }
