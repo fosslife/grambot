@@ -60,9 +60,9 @@ tag = {
 
 myname = {
     "pattern": re.compile(r".*(spark|sparkenstein|sprk|prabhanjan|prabhu)", re.IGNORECASE),
-    "incoming": False,
+    "incoming": True,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 waiting = {
