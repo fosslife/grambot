@@ -106,3 +106,10 @@ omni = {
     "outgoing": True,
     "chats": chats
 }
+
+dad = {
+    "pattern": re.compile(r".*(I\'m\ *|i am\ )(.*)", re.IGNORECASE),
+    "incoming": True,
+    "outgoing": False,
+    "chats": chats
+}
