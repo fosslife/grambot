@@ -3,15 +3,72 @@ import re
 env = environ.get('allowed_chats').split(" ")
 chats = list(map(int, env))
 
-weather = {
-    "pattern": "\.weather",
+cleanup = {
+    "pattern": "\.clean",
     "incoming": False,
     "outgoing": True,
     "chats": chats
 }
 
-user = {
-    "pattern": "\.user",
+dad = {
+    "pattern": re.compile(r".*(I\'m\ *|i am\ )(.*)", re.IGNORECASE),
+    "incoming": True,
+    "outgoing": False,
+    "chats": chats
+}
+
+die = {
+    "pattern": "\.die",
+    "incoming": False,
+    "outgoing": True,
+    "chats": chats
+}
+
+
+google = {
+    "pattern": "\.google",
+    "incoming": False,
+    "outgoing": True,
+    "chats": chats
+}
+
+groupinfo = {
+    "pattern": "\.id",
+    "incoming": False,
+    "outgoing": True,
+}
+
+help = {
+    "pattern": "\.help",
+    "incoming": False,
+    "outgoing": True,
+    "chats": chats
+}
+
+
+meme = {
+    "pattern": "\.meme",
+    "incoming": False,
+    "outgoing": True,
+    "chats": chats
+}
+
+messages = {
+    "pattern": "\.say",
+    "incoming": False,
+    "outgoing": True,
+    "chats": chats
+}
+
+myname = {
+    "pattern": re.compile(r".*()", re.IGNORECASE),
+    "incoming": True,
+    "outgoing": False,
+    # "chats": chats
+}
+
+omni = {
+    "pattern": "\.omni",
     "incoming": False,
     "outgoing": True,
     "chats": chats
@@ -24,31 +81,11 @@ quote = {
     "chats": chats
 }
 
-help = {
-    "pattern": "\.help",
+server = {
+    "pattern": "\.exec",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
-}
-
-die = {
-    "pattern": "\.die",
-    "incoming": False,
-    "outgoing": True,
-    "chats": chats
-}
-
-meme = {
-    "pattern": "\.meme",
-    "incoming": False,
-    "outgoing": True,
-    "chats": chats
-}
-
-ids = {
-    "pattern": "\.id",
-    "incoming": False,
-    "outgoing": True,
+    "chats": 'me'
 }
 
 tag = {
@@ -58,13 +95,12 @@ tag = {
     "chats": chats
 }
 
-myname = {
-    "pattern": re.compile(r".*(spark|sparkenstein|sprk|prabhanjan|prabhu)", re.IGNORECASE),
-    "incoming": True,
+user = {
+    "pattern": "\.user",
+    "incoming": False,
     "outgoing": True,
-    # "chats": chats
+    "chats": chats
 }
-
 waiting = {
     "pattern": "\.wait",
     "incoming": False,
@@ -72,44 +108,9 @@ waiting = {
     "chats": chats
 }
 
-google = {
-    "pattern": "\.google",
+weather = {
+    "pattern": "\.weather",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
-}
-
-server = {
-    "pattern": "\.exec",
-    "incoming": False,
-    "outgoing": True,
-    "chats": 'me'
-}
-
-messages = {
-    "pattern": "\.say",
-    "incoming": False,
-    "outgoing": True,
-    "chats": chats
-}
-
-cleanup = {
-    "pattern": "\.clean",
-    "incoming": False,
-    "outgoing": True,
-    "chats": chats
-}
-
-omni = {
-    "pattern": "\.omni",
-    "incoming": False,
-    "outgoing": True,
-    "chats": chats
-}
-
-dad = {
-    "pattern": re.compile(r".*(I\'m\ *|i am\ )(.*)", re.IGNORECASE),
-    "incoming": True,
-    "outgoing": False,
     "chats": chats
 }
