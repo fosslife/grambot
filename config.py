@@ -1,7 +1,7 @@
 from os import environ
 import re
-env = environ.get('allowed_chats').split(" ")
-chats = list(map(int, env))
+chats = list(map(int, environ.get('allowed_chats').split(" ")))
+aliases = environ.get('my_name_aliases').replace(" ", "|")
 
 cleanup = {
     "pattern": "\.clean",
@@ -61,9 +61,9 @@ messages = {
 }
 
 myname = {
-    "pattern": re.compile(r".*()", re.IGNORECASE),
+    "pattern": re.compile(r".*("+aliases+")", re.IGNORECASE),
     "incoming": True,
-    "outgoing": False,
+    "outgoing": True,
     # "chats": chats
 }
 
