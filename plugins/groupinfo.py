@@ -1,9 +1,9 @@
 from userbot import bot, logger
 from telethon import TelegramClient, events
-from config import ids
+from config import groupinfo
 
 
-@bot.on(events.NewMessage(**ids))
+@bot.on(events.NewMessage(**groupinfo))
 async def fn(event):
     logger.info("group info plugin called")
     try:
