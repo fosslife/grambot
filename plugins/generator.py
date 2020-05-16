@@ -1,5 +1,6 @@
 from userbot import bot, logger
 from telethon import TelegramClient, events
+from telethon.tl import types
 from config import generator
 from bs4 import BeautifulSoup
 import requests
@@ -9,6 +10,7 @@ import urllib
 urls = {
     "word": "https://www.thisworddoesnotexist.com/",
     "waifu": "https://www.thiswaifudoesnotexist.net/",
+    "art": "https://thisartworkdoesnotexist.com/",
 }
 
 @bot.on(events.NewMessage(**generator))
@@ -26,8 +28,15 @@ async def generate(event):
         definition = soup.find(id="definition-definition").text
         example = soup.find(id="definition-example").text
         await event.respond(f"""**{word}**\n{definition}\n\n__{example}__""", parse_mode="md")
-    if category == "waifu":
+    elif category == "waifu":
         fullurl = f"""{url}example-{randint(1, 99999)}.jpg"""
         await event.respond(file=fullurl)
+    elif category == "art":
+        fullurl = f"""{url}artwork"""
+        try:
+            await event.respond(file=types.InputMediaPhotoExternal(fullurl))
+        except Exception as ex:
+            print("Error Occurred", ex)
+            await event.respond("Error")
     else:
         await event.respond("Cannot generate selected entity")
