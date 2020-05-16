@@ -25,7 +25,7 @@ async def googlefn(event):
             await event.respond(msg)
             logger.info("found record with attribute type tts_text")
             return # don't execute this method further
-        except IndexError as e:
+        except IndexError:
             pass
         # that means try another method:
         attr_kc_text = soup.findAll("div", {"data-attrid" : re.compile(r"^kc:/\w+/\w+:\w+")})
@@ -37,7 +37,7 @@ async def googlefn(event):
                 await event.respond(msg)
                 logger.info("found record with attribute type kc:/x/x in second div")
                 return
-            except AttributeError as a:
+            except AttributeError:
                 msg = attr_kc_text[0].findChild("div", {"role": "heading"}).findChild().text
                 await event.respond(msg)
                 logger.info("found record with attribute type kc:/x/x in first div")
