@@ -69,7 +69,7 @@ async def googlefn(event):
             attribute = card[0].get('aria-label')
             if attribute is None:
                 # it's a time realted card
-                time = card[0].findChild().text
+                time = card[0].text
                 logger.info(f"found record as time card {time}")
                 await event.respond(time)
                 return
