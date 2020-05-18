@@ -65,7 +65,7 @@ async def googlefn(event):
         rso = soup.find(id="rso")
         card = rso.findChildren("div", {"class": "card-section"}, recursive=True)
         try:
-            print(card)
+            # print(rso)
             attribute = card[0].get('aria-label')
             if attribute is None:
                 # it's a time realted card
@@ -77,11 +77,11 @@ async def googlefn(event):
                 logger.info("it's a currency card")
                 parent = soup.find(id="knowledge-currency__updatable-data-column") # Hopefully they won't change ID
                 currency = parent.findChild().text
-                # _ = currency.split('equals')
+                _ = currency.split('equals')
                 # print(currency, _)
-                # hacked_text = f"{_[0]} equals {_[1]}"   # ugly hack because some smartass in google did not put space after 'equals' word
-                # logger.info(f"currency conversion should be {currency}")
-                await event.respond(currency)
+                hacked_text = f"{_[0]} equals {_[1]}"   # ugly hack because some smartass in google did not put space after 'equals' word
+                logger.info(f"currency conversion should be {currency}")
+                await event.respond(hacked_text)
         except Exception as e:
             # print(e.with_traceback())
             logger.exception(e)
