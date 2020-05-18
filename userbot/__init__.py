@@ -13,7 +13,7 @@ if not os.path.exists('logs'):
     os.mkdir('logs')
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 needRoll = os.path.isfile(LOG_FILENAME)
 
