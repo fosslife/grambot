@@ -16,7 +16,7 @@ async def googlefn(event):
         logger.info(f"query string to search {query_string}")
         query_params = query_string.replace(" ", "+")
         logger.info(f"Query params {query_params}")
-        res = requests.get('https://www.google.com/search',  {"q": query_params}, headers=USER_AGENT)
+        res = requests.get('https://www.google.com/search',  {"q": query_params, "hl": "en"}, headers=USER_AGENT)
         soup = BeautifulSoup(res.text, 'html.parser')
     except Exception as e:
         logger.exception(f"Error while fetching records {e}")
