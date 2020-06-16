@@ -60,7 +60,10 @@ def format_weather_response(weather_res):
         city = weather_res['name']
         country = weather_res['sys']['country']
         wind = weather_res['wind']['speed']
-        rain = weather_res['rain']['1h']
+        if 'rain' in weather_res:
+            rain = weather_res['rain']['1h']
+        else:
+            rain = 0;
         cloud_coverage = weather_res['clouds']['all']
         # print("\n\n", re.findall("", pattern_string))
         return f"""
@@ -73,6 +76,9 @@ Wind `{wind}` meter/sec
 `{rain}` cm rain in last 1 hour
 `{cloud_coverage}`% Cloud coverage
     """
+    except KeyError as e:
+        logger.exception(f"Error in formatting {e}")
+        pass
     except Exception as e:
         print("Error", weather_res)
         logger.exception(f"Error in formatting {e}")
