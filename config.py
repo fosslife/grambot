@@ -64,7 +64,7 @@ messages = {
 myname = {
     "pattern": re.compile(r".*("+aliases+")", re.IGNORECASE),
     "incoming": True,
-    "outgoing": True,
+    "outgoing": False,
     # "chats": chats
 }
 
