@@ -3,18 +3,21 @@ import re
 chats = list(map(int, environ.get('allowed_chats').split(" ")))
 aliases = environ.get('my_name_aliases').replace(" ", "|")
 
+async def namefilter(x):
+    return not await x.client.is_bot()
+
 cleanup = {
     "pattern": r"\.clean",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 die = {
     "pattern": r"\.die",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 
@@ -22,7 +25,7 @@ generator = {
     "pattern": r"\.generate",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 
@@ -30,7 +33,7 @@ google = {
     "pattern": r"\.google",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 groupinfo = {
@@ -43,7 +46,7 @@ help = {
     "pattern": r"\.help",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 
@@ -51,20 +54,21 @@ meme = {
     "pattern": r"\.meme",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 messages = {
     "pattern": r"\.say",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 myname = {
     "pattern": re.compile(r".*("+aliases+")", re.IGNORECASE),
     "incoming": True,
     "outgoing": False,
+    "func": namefilter
     # "chats": chats
 }
 
@@ -72,14 +76,14 @@ omni = {
     "pattern": r"\.omni",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 quote = {
     "pattern": r"\.quote",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 server = {
@@ -93,25 +97,25 @@ tag = {
     "pattern": r"(.*)\[([^\]]+)\]\(([^)]+)\)(.*)",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 user = {
     "pattern": r"\.user",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 waiting = {
     "pattern": r"\.wait",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
 
 weather = {
     "pattern": r"\.weather",
     "incoming": False,
     "outgoing": True,
-    "chats": chats
+    # "chats": chats
 }
