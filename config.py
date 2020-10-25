@@ -113,6 +113,12 @@ waiting = {
     # "chats": chats
 }
 
+wall = {
+    "pattern": r"\.wall",
+    "incoming": False,
+    "outgoing": True,
+}
+
 weather = {
     "pattern": r"\.weather",
     "incoming": False,
