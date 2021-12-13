@@ -8,6 +8,7 @@ from config import chats
 reg = r"^\.anim\((?P<q>\"|')?(?(q)((?:(?!(?P=q)).)+)(?P=q)|([^,)]+)),\s*(?P<r>\"|')?(?(r)((?:(?!(?P=r)).)+)(?P=r)|([^,)]+))\)$"
 compiled = re.compile(reg)
 
+
 def parse(text):
     x = compiled
     match = x.match(text)
@@ -22,6 +23,7 @@ def parse(text):
             second_param = match.group(6)
         return (first_param, second_param)
     return None
+
 
 @bot.on(events.NewMessage(pattern=compiled, chats=chats, incoming=False, outgoing=True))
 async def anim(event):
@@ -38,7 +40,7 @@ async def anim(event):
             reply_to_user = event.message.to_id.channel_id
         sent = await event.respond(after, reply_to=event.reply_to_msg_id)
         logger.info(f"replying to {sent.id}")
-        for i in range(0, 2):
+        for i in range(0, 5):
             await bot.edit_message(reply_to_user, sent.id, before)
             await sleep(0.5)
             await bot.edit_message(reply_to_user, sent.id, after)
