@@ -9,8 +9,7 @@ RUN sed -e 's;^#http\(.*\)/edge/community;http\1/edge/community;g' -i /etc/apk/r
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories
 
 
-RUN adduser -D myuser
-USER myuser
+USER root
 
 #
 # Installing Packages
