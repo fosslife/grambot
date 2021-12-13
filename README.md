@@ -12,6 +12,23 @@ This bot is written in Python, with a famous telegram MTProto framework known as
 
 <p style="text-align: left;"><a href="https://heroku.com/deploy"> <img style="float: left;" src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy to Heroku" /></a></p>
 
+> Note that heroku deploys the bot successfully, but somehow doesn't start the bot automatically. I am not good
+> with heroku. if someone knows the issue feel free to open PR. otherwise, for now, once bot is deployed with above
+> button, go to following section from heroku dashboard, and toggle it to turn dyno on.
+
+![heroku](./heroku.png)
+
+to get the `string_session` key, just clone the repo, get apiid and apikey from telegram (see steps below), paste them in .env file.
+then run `stringsession.py` it will output the key for you, paste it in heroku deploy dashboard you see after you click above button.
+
+to check logs:
+
+```
+heroku logs -a heroku-app-id --tail
+```
+
+it's always a good idea to connect heroku with repository, so just fork the repo and connect it with github, for manual deploys
+
 ## Example
 
 [See full list [Here](./Plugins.md)]
