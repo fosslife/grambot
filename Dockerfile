@@ -1,4 +1,4 @@
-    
+
 # We're using Alpine Edge
 FROM alpine:edge
 
@@ -56,6 +56,8 @@ RUN apk add --no-cache=true --update \
     zip \
     megatools \
     nodejs \
+    openssh \
+    iproute2 \
     freetype-dev
 
 
@@ -66,6 +68,9 @@ RUN python3 -m ensurepip \
     if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
     if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
     rm -r /root/.cache
+
+
+ADD ./heroku-exec.sh /app/.profile.d/
 
 #
 # Clone repo and prepare working directory
@@ -83,4 +88,4 @@ COPY ./sample.env ./tguserbot.session* ./.env* /root/grambot/
 #
 RUN pip3 install -r requirements.txt
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-CMD ["python3","-m","userbot"]
+CMD bash heroku-exec.sh && python3 -m userbot
