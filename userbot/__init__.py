@@ -4,7 +4,7 @@ import os
 import sys
 
 import logging
-from logging import StreamHandler
+from logging import StreamHandler, log
 from logging.handlers import RotatingFileHandler
 from telethon import TelegramClient, events
 import time
@@ -26,6 +26,9 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 
+load_dotenv(".env")
+
+
 STRING_SESSION = os.environ.get("string_session_key", None)
 
 if STRING_SESSION:
@@ -33,10 +36,9 @@ if STRING_SESSION:
     formatter = logging.Formatter(
         "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
     )
+    handler.setLevel(logging.INFO)
     handler.setFormatter(formatter)
     logger.addHandler(handler)
-
-load_dotenv(".env")
 
 
 if needRoll:
@@ -48,6 +50,7 @@ api_hash = os.environ["apihash"]
 
 
 if STRING_SESSION:
+    logger.info("String session exists")
     bot = TelegramClient(StringSession(STRING_SESSION), api_id, api_hash)
 else:
     bot = TelegramClient("tguserbot", api_id, api_hash)
