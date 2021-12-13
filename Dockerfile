@@ -71,7 +71,6 @@ RUN python3 -m ensurepip \
 # Clone repo and prepare working directory
 #
 RUN git clone -b master https://github.com/fosslife/grambot /root/grambot
-RUN mkdir /root/v/bin/
 WORKDIR /root/grambot
 
 #
