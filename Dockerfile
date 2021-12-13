@@ -8,6 +8,10 @@ FROM alpine:edge
 RUN sed -e 's;^#http\(.*\)/edge/community;http\1/edge/community;g' -i /etc/apk/repositories
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories
 
+
+RUN adduser -D myuser
+USER myuser
+
 #
 # Installing Packages
 #
@@ -44,6 +48,7 @@ RUN apk add --no-cache=true --update \
     wget \
     python3 \
     python3-dev \
+    py3-pip \
     readline-dev \
     sqlite \
     ffmpeg \
@@ -83,9 +88,10 @@ WORKDIR /root/grambot
 #
 COPY ./sample.env ./tguserbot.session* ./.env* /root/grambot/
 
+
 #
 # Install requirements
 #
-RUN pip3 install -r requirements.txt
+RUN pip3 install --no-cache-dir -q -r requirements.txt
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 CMD bash heroku-exec.sh && python3 -m userbot

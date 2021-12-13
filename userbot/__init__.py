@@ -10,24 +10,12 @@ from telethon import TelegramClient, events
 import time
 from dotenv import load_dotenv
 
-LOG_FILENAME = "logs/grambot.log"
-
-if not os.path.exists("logs"):
-    os.mkdir("logs")
-
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-
-needRoll = os.path.isfile(LOG_FILENAME)
-
-handler = RotatingFileHandler(LOG_FILENAME, backupCount=10)
-formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
-handler.setFormatter(formatter)
-logger.addHandler(handler)
-
 
 load_dotenv(".env")
 
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 STRING_SESSION = os.environ.get("string_session_key", None)
 
@@ -40,9 +28,22 @@ if STRING_SESSION:
     handler.setFormatter(formatter)
     logger.addHandler(handler)
 
+else:
+    LOG_FILENAME = "logs/grambot.log"
+    if not os.path.exists("logs"):
+        os.mkdir("logs")
 
-if needRoll:
-    logger.handlers[0].doRollover()
+        needRoll = os.path.isfile(LOG_FILENAME)
+
+        handler = RotatingFileHandler(LOG_FILENAME, backupCount=10)
+        formatter = logging.Formatter(
+            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        )
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+
+        if needRoll:
+            logger.handlers[0].doRollover()
 
 
 api_id = os.environ["apiid"]
@@ -53,4 +54,5 @@ if STRING_SESSION:
     logger.info("String session exists")
     bot = TelegramClient(StringSession(STRING_SESSION), api_id, api_hash)
 else:
+    logger.info("String session does not exists")
     bot = TelegramClient("tguserbot", api_id, api_hash)
