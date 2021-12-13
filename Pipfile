@@ -6,9 +6,13 @@ verify_ssl = true
 [dev-packages]
 autopep8 = "*"
 pylint = "*"
+black = "*"
 
 [packages]
 telethon = "*"
 requests = "*"
 python-dotenv = "*"
 beautifulsoup4 = "*"
+
+[pipenv]
+allow_prereleases = true

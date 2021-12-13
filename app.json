@@ -1,0 +1,38 @@
+{
+    "name": "grambot",
+    "description": "Telgram userbot",
+    "repository": "https://github.com/fosslife/grambot",
+    "keywords": ["telethon", "telegram", "python", "userbot"],
+    "website": "https://github.com/fosslife/grambot",
+    "stack": "container",
+    "env": {
+        "apihash": {
+          "description": "you app API hash. get it from my.telegram.org",
+          "required": true
+        },
+        "apiid": {
+            "description": "you app API ID. get it from my.telegram.org",
+            "required": true
+          },
+          "string_session_key": {
+            "description": "your string session key. get this by running stringsession.py from repo",
+            "required":true
+          },
+          "openweather_api_key": {
+            "description": "OpenWeather key for weather plugin",
+            "required":false
+          },
+          "allowed_chats": {
+            "description": "List of chats your bot is allowed to run. this is helpful to prevent spam. space seprated list of ids. you can get these ids by .id plugin of bot",
+            "required":true
+          },
+          "my_name_aliases": {
+            "description": "your hidden eye on who is speaking your name RTFM"
+          },
+          "wolfram_appid": {
+            "description": "Wolfram api id",
+            "required":true
+          }
+    }
+  }
+  
