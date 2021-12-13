@@ -15,7 +15,7 @@ USER myuser
 #
 # Installing Packages
 #
-RUN sudo apk add --no-cache=true --update \
+RUN apk add --no-cache --update \
     coreutils \
     bash \
     build-base \
