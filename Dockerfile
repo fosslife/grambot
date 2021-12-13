@@ -70,7 +70,7 @@ RUN python3 -m ensurepip \
     rm -r /root/.cache
 
 
-ADD ./heroku-exec.sh /app/.profile.d/
+ADD ./heroku-exec.sh /app/.profile.d
 
 #
 # Clone repo and prepare working directory
