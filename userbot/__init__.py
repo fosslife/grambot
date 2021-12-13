@@ -1,8 +1,10 @@
 from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 import os
+import sys
 
 import logging
+from logging import StreamHandler
 from logging.handlers import RotatingFileHandler
 from telethon import TelegramClient, events
 import time
@@ -22,14 +24,24 @@ handler = RotatingFileHandler(LOG_FILENAME, backupCount=10)
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 handler.setFormatter(formatter)
 logger.addHandler(handler)
+
+
+STRING_SESSION = os.environ.get("string_session_key", None)
+
+if STRING_SESSION:
+    handler = StreamHandler(sys.stdout)
+    formatter = logging.Formatter(
+        "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    )
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
 load_dotenv(".env")
 
 
 if needRoll:
     logger.handlers[0].doRollover()
 
-
-STRING_SESSION = os.environ.get("string_session_key", None)
 
 api_id = os.environ["apiid"]
 api_hash = os.environ["apihash"]
