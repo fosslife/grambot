@@ -27,7 +27,8 @@
             "required":true
           },
           "my_name_aliases": {
-            "description": "your hidden eye on who is speaking your name RTFM"
+            "description": "your hidden eye on who is speaking your name RTFM",
+            "required":false
           },
           "wolfram_appid": {
             "description": "Wolfram api id",
