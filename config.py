@@ -1,10 +1,13 @@
 from os import environ
 import re
-chats = list(map(int, environ.get('allowed_chats').split(" ")))
-aliases = environ.get('my_name_aliases').replace(" ", "|")
+
+chats = list(map(int, environ.get("allowed_chats").split(" ")))
+aliases = environ.get("my_name_aliases").replace(" ", "|")
+
 
 async def namefilter(x):
     return not await x.client.is_bot()
+
 
 cleanup = {
     "pattern": r"\.clean",
@@ -65,7 +68,7 @@ messages = {
 }
 
 myname = {
-    "pattern": re.compile(r".*("+aliases+")", re.IGNORECASE),
+    "pattern": re.compile(r".*(" + aliases + ")", re.IGNORECASE),
     "incoming": True,
     "outgoing": False,
     "func": namefilter
@@ -86,12 +89,14 @@ quote = {
     # "chats": chats
 }
 
-server = {
-    "pattern": r"\.exec",
-    "incoming": False,
+reminder = {
+    "pattern": r"(.remindme)\s(to)\s(.*)\s(in)\s(\d+){1,2}\s(sec|seconds|min|minutes|hour|hours|day|days|week|weeks|month|months)",
+    "incoming": True,
     "outgoing": True,
-    "chats": 'me'
+    "chats": chats,
 }
+
+server = {"pattern": r"\.exec", "incoming": False, "outgoing": True, "chats": "me"}
 
 tag = {
     "pattern": r"(.*)\[([^\]]+)\]\(([^)]+)\)(.*)",
