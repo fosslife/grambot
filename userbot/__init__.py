@@ -6,10 +6,8 @@ import sys
 import logging
 from logging import StreamHandler, log
 from logging.handlers import RotatingFileHandler
-from telethon import TelegramClient, events
 import time
 from dotenv import load_dotenv
-
 
 load_dotenv(".env")
 
@@ -29,12 +27,20 @@ if STRING_SESSION:
     logger.addHandler(handler)
 
 else:
-    LOG_FILENAME = "logs/grambot.log"
-    if not os.path.exists("logs"):
-        os.mkdir("logs")
+    if (os.environ.get("env") == "dev"):
+        handler = StreamHandler(sys.stdout)
+        formatter = logging.Formatter(
+            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        )
+        handler.setLevel(logging.INFO)
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+    else:
+        LOG_FILENAME = "logs/grambot.log"
+        if not os.path.exists("logs"):
+            os.mkdir("logs")
 
         needRoll = os.path.isfile(LOG_FILENAME)
-
         handler = RotatingFileHandler(LOG_FILENAME, backupCount=10)
         formatter = logging.Formatter(
             "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
