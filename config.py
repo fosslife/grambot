@@ -1,9 +1,8 @@
 from os import environ
 import re
 
-chats = list(map(int, environ.get("allowed_chats").split(" ")))
+chats = list(map(int, environ.get("allowed_chats", "").split(" ")))
 aliases = environ.get("my_name_aliases").replace(" ", "|")
-
 
 async def namefilter(x):
     return not await x.client.is_bot()
