@@ -3,6 +3,7 @@ import re
 
 chats = list(map(int, environ.get("allowed_chats", "").split(" ")))
 aliases = environ.get("my_name_aliases").replace(" ", "|")
+blacklist_chats = list(map(int, environ.get("blacklist_chats", "").split(" ")))
 
 async def namefilter(x):
     return not await x.client.is_bot()
@@ -70,7 +71,8 @@ myname = {
     "pattern": re.compile(r".*(" + aliases + ")", re.IGNORECASE),
     "incoming": True,
     "outgoing": False,
-    "func": namefilter
+    "func": namefilter,
+    "blacklist_chats": blacklist_chats
     # "chats": chats
 }
 
