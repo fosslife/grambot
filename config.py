@@ -89,7 +89,7 @@ quote = {
 }
 
 reminder = {
-    "pattern": r"(.remindme)\s(to)\s(.*)\s(in|after)\s(\d+){1,2}\s(sec|seconds|min|minutes|hour|hours|day|days|week|weeks|month|months)",
+    "pattern": r"(.remindme)\s(to)\s(.*)\s(in|after|every)\s(\d+){1,2}\s(sec|seconds|min|minutes|hour|hours|day|days|week|weeks|month|months)",
     "incoming": True,
     "outgoing": True,
     "chats": chats,
