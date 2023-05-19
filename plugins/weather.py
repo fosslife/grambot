@@ -90,6 +90,26 @@ def get_response(url, params):
 
 def format_weather_response(weather_res):
     try:
+        weather_icons = {
+            "01d": "☀️",
+            "01n": "☀️",
+            "02d": "🌤️",
+            "02n": "🌤️",
+            "03d": "⛅",
+            "03n": "⛅",
+            "04d": "🌥️",
+            "04n": "🌥️",
+            "09d": "🌦️",
+            "09n": "🌦️",
+            "10d": "🌧️",
+            "10n": "🌧️",
+            "11d": "⛈️",
+            "11n": "⛈️",
+            "13d": "❄️",
+            "13n": "❄️",
+            "50d": "🌫️",
+            "50n": "🌫️"
+        }
         # logger.info(f"request to format {weather_res}")
         temp_in_celcius = weather_res["main"]["temp"]
         feels_like = weather_res["main"]["feels_like"]
@@ -98,6 +118,7 @@ def format_weather_response(weather_res):
         humidity = weather_res["main"]["humidity"]
         pressure = weather_res["main"]["pressure"]
         sky = weather_res["weather"][0]["description"]
+        icon = weather_res["weather"][0]["icon"]
         city = weather_res["name"]
         country = weather_res["sys"]["country"]
         wind = weather_res["wind"]["speed"]
@@ -112,20 +133,22 @@ def format_weather_response(weather_res):
         cloud_coverage = weather_res["clouds"]["all"]
         # print("\n\n", re.findall("", pattern_string))
         return f"""
-Weather: __{city},{country}__ - __{sky}__
+```
+Weather: {city},{country} - {weather_icons[icon]} {sky} 
 
-Temperature:  __{temp_in_celcius:.2f}°C__,
-Feels like:  __{feels_like:.2f}°C__
-Min:  __{temp_min:.2f}°C__
-Max:  __{temp_max:.2f}°C__
+Temperature:      {temp_in_celcius:.2f}°C,
+Feels like:       {feels_like:.2f}°C
+Min:              {temp_min:.2f}°C
+Max:              {temp_max:.2f}°C
 
-Humidity:  __{humidity}%__
-Pressure:  __{pressure} Pa__ 
-Wind:  __{wind} meter/sec__
-Rain:  __{rain} cm__ (last 1 hour)
-Snow:  __{snow} mm__ (last 1 hour)
+Humidity:         {humidity}%
+Pressure:         {pressure} Pa 
+Wind:             {wind} meter/sec
+Rain:             {rain} cm (last 1 hour)
+Snow:             {snow} mm (last 1 hour)
 
-Clouds:  __{cloud_coverage}%__ Coverage
+Clouds:           {cloud_coverage}% Coverage
+```
 """
     except KeyError as e:
         logger.exception(f"Error in formatting {e}")
