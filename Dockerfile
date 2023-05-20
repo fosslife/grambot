@@ -1,13 +1,25 @@
 #Create a ubuntu base image with python 3 installed.
-FROM python:3.8
+FROM pypy:slim-bullseye
 
+WORKDIR /app
 
-WORKDIR /
+# Copy the requirements.txt file to the container
+COPY requirements.txt .
 
-#copy all the files
+# Install project dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the entire project to the container
 COPY . .
 
-#Install the dependencies
-RUN apt-get -y update
-RUN apt-get update && apt-get install -y python3 python3-pip
-RUN pip3 install -r requirements.txt
+# Copy the .env file to the container
+COPY .env .
+
+# Set environment variables if necessary
+# ENV VARIABLE_NAME value
+
+# Expose any necessary ports
+# EXPOSE port_number
+
+# Run the command to start the application
+CMD [ "python", "-m", "userbot" ]
