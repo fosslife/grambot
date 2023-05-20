@@ -1,9 +1,26 @@
 from os import environ
 import re
 
-chats = list(map(int, environ.get("allowed_chats", "").split(" ")))
-aliases = environ.get("my_name_aliases").replace(" ", "|")
-blacklist_chats = list(map(int, environ.get("blacklist_chats", "").split(" ")))
+allowed_chats = environ.get("allowed_chats")
+blacklist_chats_env = environ.get("blacklist_chats")
+
+if allowed_chats:
+    chats = list(map(int, allowed_chats.split(" ")))
+else:
+    chats = []
+
+# aliases = environ.get("my_name_aliases").replace(" ", "|")
+aliases_env = environ.get("my_name_aliases")
+if aliases_env:
+    aliases = aliases_env.replace(" ", "|")
+else:
+    aliases = None
+
+if blacklist_chats_env:
+    blacklist_chats = list(map(int, blacklist_chats_env.split(" ")))
+else:
+    blacklist_chats = []
+
 
 async def namefilter(x):
     return not await x.client.is_bot()
@@ -68,13 +85,15 @@ messages = {
 }
 
 myname = {
-    "pattern": re.compile(r".*(" + aliases + ")", re.IGNORECASE),
+    # "pattern": if aliases  re.compile(r".*(" + aliases + ")", re.IGNORECASE) else "",
     "incoming": True,
     "outgoing": False,
     "func": namefilter,
     "blacklist_chats": blacklist_chats
     # "chats": chats
 }
+if aliases and len(aliases) > 0:
+    myname["pattern"] = re.compile(r".*(" + aliases + ")", re.IGNORECASE)
 
 omni = {
     "pattern": r"\.omni",
@@ -127,7 +146,7 @@ wall = {
 
 weather = {
     "pattern": r"\.weather",
-    "incoming": False,
+    "incoming": True,
     "outgoing": True,
     # "chats": chats
 }
